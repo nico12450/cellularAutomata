@@ -1,0 +1,2 @@
+# cellularAutomata
+Configurable cellular automata
