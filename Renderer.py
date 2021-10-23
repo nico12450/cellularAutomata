@@ -9,8 +9,6 @@ def drawGrid(grid: grid, cnv: Canvas):
     cnvHeight = cnv.winfo_reqheight()
     hstep = cnvHeight/grid.height
 
-    print(cnvHeight)
-
     for i in range(grid.width):
         
         cnv.create_line(i*wstep, 0, i*wstep, cnvHeight)
