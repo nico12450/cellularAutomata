@@ -33,6 +33,19 @@ def next(grid: grid, cnv: Canvas):
     gameOfLife.nextState()
     drawGrid(grid, cnv)
 
+def click(event, grid: grid, cnv: Canvas):
+
+    cnvWidth = cnv.winfo_reqwidth()
+    wstep = cnvWidth/grid.width
+    cnvHeight = cnv.winfo_reqheight()
+    hstep = cnvHeight/grid.height
+
+    j = int(event.x/wstep)
+    i = grid.height - int(event.y/hstep)
+
+    grid.toggle(j, i)
+    drawGrid(grid, cnv)
+
 
 root = Tk()
 
@@ -42,6 +55,7 @@ frm.grid()
 #ttk.Button(frm, text="Quit", command=root.destroy).grid(column=1, row=0)
 
 cnv = Canvas(root, width=root.winfo_screenwidth()*0.8, height=root.winfo_screenheight()*0.8, bg="ivory")
+cnv.bind("<Button-1>", lambda event: click(event, gameOfLife.grid, cnv))
 cnv.grid()
 drawGrid(gameOfLife.grid, cnv)
 
